@@ -73,8 +73,8 @@ public class ResetContourFeatureExtractorTest {
     fe = new ResetContourFeatureExtractor(contour_feature, subregion_feature);
     assertEquals(3, fe.getRequiredFeatures().size());
     assertTrue(fe.getRequiredFeatures().contains(contour_feature));
-    assertTrue(fe.getRequiredFeatures().contains("van_" + subregion_feature));
-    assertTrue(fe.getRequiredFeatures().contains("trail_" + subregion_feature));
+    assertTrue(fe.getRequiredFeatures().contains("van[" + subregion_feature + "]"));
+    assertTrue(fe.getRequiredFeatures().contains("trail[" + subregion_feature + "]"));
   }
 
   @Test
@@ -122,12 +122,12 @@ public class ResetContourFeatureExtractorTest {
 
     Word w = new Word(0, 1, "test");
     w.setAttribute("contour", new Contour(0, 0.1, new double[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}));
-    w.setAttribute("van_" + subregion_feature, new Region(0.6, 1));
-    w.setAttribute("trail_" + subregion_feature, new Region(0, 0.6));
+    w.setAttribute("van[" + subregion_feature + "]", new Region(0.6, 1));
+    w.setAttribute("trail[" + subregion_feature + "]", new Region(0, 0.6));
     Word w2 = new Word(1, 2, "test2");
     w2.setAttribute("contour", new Contour(1, 0.1, new double[]{10, 11, 12, 13, 14}));
-    w2.setAttribute("trail_" + subregion_feature, new Region(1, 1.4));
-    w2.setAttribute("van_" + subregion_feature, new Region(1.4, 2.0));
+    w2.setAttribute("trail[" + subregion_feature + "]", new Region(1, 1.4));
+    w2.setAttribute("van[" + subregion_feature + "]", new Region(1.4, 2.0));
     regions.add(w);
     regions.add(w2);
 
@@ -146,12 +146,12 @@ public class ResetContourFeatureExtractorTest {
 
     Word w = new Word(0, 1, "test");
     w.setAttribute("contour", new Contour(0, 0.1, new double[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}));
-    w.setAttribute("van_" + subregion_feature, new Region(0.6, 1));
-    w.setAttribute("trail_" + subregion_feature, new Region(0, 0.6));
+    w.setAttribute("van[" + subregion_feature + "]", new Region(0.6, 1));
+    w.setAttribute("trail[" + subregion_feature + "]", new Region(0, 0.6));
     Word w2 = new Word(1, 2, "test2");
     w2.setAttribute("contour", new Contour(1, 0.1, new double[]{10, 11, 12, 13, 14}));
-    w2.setAttribute("trail_" + subregion_feature, new Region(1, 1.4));
-    w2.setAttribute("van_" + subregion_feature, new Region(1.4, 2.0));
+    w2.setAttribute("trail[" + subregion_feature + "]", new Region(1, 1.4));
+    w2.setAttribute("van[" + subregion_feature + "]", new Region(1.4, 2.0));
     regions.add(w);
     regions.add(w2);
 
