@@ -13,13 +13,13 @@ Tests run: 859, Failures: 0, Errors: 0, Skipped: 2 Missing wav files
 
 Missing wav files:
 
-  ┌──────────────────┬────────────────────────┬───────────────────────────────────────────────────────────────────────┐     
-  │   Missing file   │       Test class       │                              Test method                              │     
-  ├──────────────────┼────────────────────────┼───────────────────────────────────────────────────────────────────────┤     
-  │ test.8k.wav      │ PitchExtractorTest     │ testPitchExtractorGeneratesAReasonableNumberOfPitchFramesWith8khzFile │     
-  ├──────────────────┼────────────────────────┼───────────────────────────────────────────────────────────────────────┤     
-  │ test_villing.wav │ VillingSyllabifierTest │ testVillingSyllabifierIDsSyllables                                    │     
-  └──────────────────┴────────────────────────┴───────────────────────────────────────────────────────────────────────┘     
+  ┌──────────────────┬────────────────────────┬──────────────────────────────────────────────────────────────────────┐     
+  │   Missing file   │       Test class       │                              Test method                             │     
+  ├──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────┤     
+  │ test.8k.wav      │ PitchExtractorTest     │ testPitchExtractorGeneratesAReasonableNumberOfPitchFramesWith8khzFile│     
+  ├──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────┤     
+  │ test_villing.wav │ VillingSyllabifierTest │ testVillingSyllabifierIDsSyllables                                   │     
+  └──────────────────┴────────────────────────┴──────────────────────────────────────────────────────────────────────┘     
 
 
 Moved all dependancies to Maven
