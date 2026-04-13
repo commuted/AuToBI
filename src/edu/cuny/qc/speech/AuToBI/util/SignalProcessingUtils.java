@@ -47,7 +47,7 @@ public class SignalProcessingUtils {
     double[] window = new double[hanning_window_samples];
     for (int i = 0; i < hanning_window_samples; ++i) {
       double phase = i * 1.0 / (hanning_window_samples - 1);
-      window[i] = 0.5 + 0.5 * Math.cos(Math.PI * phase);
+      window[i] = 0.5 - 0.5 * Math.cos(2 * Math.PI * phase);
     }
 
     return window;
