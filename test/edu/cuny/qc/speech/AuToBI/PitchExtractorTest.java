@@ -21,7 +21,10 @@ package edu.cuny.qc.speech.AuToBI;
 
 import edu.cuny.qc.speech.AuToBI.core.*;
 import edu.cuny.qc.speech.AuToBI.io.WavReader;
+import org.junit.Assume;
 import org.junit.Test;
+
+import java.io.File;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
@@ -82,6 +85,7 @@ public class PitchExtractorTest {
   @Test
   public void testPitchExtractorGeneratesAReasonableNumberOfPitchFramesWith8khzFile() {
     String inFile = System.getenv().get("AUTOBI_TEST_DIR") + "/test.8k.wav";
+    Assume.assumeTrue(new File(inFile).exists());
     WavReader reader = new WavReader();
     WavData inWave = null;
     try {
