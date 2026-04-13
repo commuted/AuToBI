@@ -37,6 +37,9 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.BasicConfigurator;
 import org.reflections.Reflections;
+import org.reflections.util.ClasspathHelper;
+import org.reflections.util.ConfigurationBuilder;
+import org.reflections.util.FilterBuilder;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.FileNotFoundException;
@@ -759,10 +762,12 @@ public class AuToBI {
           // This allows a user to omit data points with particular attributes, for
           // example, to classify only phrase ending words.
           if (attr_omit.size() > 0) {
-            for (Word w : words) {
+            for (java.util.Iterator<Word> it = words.iterator(); it.hasNext(); ) {
+              Word w = it.next();
               for (Pair<String, String> e : attr_omit) {
                 if (w.hasAttribute(e.first) && w.getAttribute(e.first).equals(e.second)) {
-                  w.setAttribute("__ignore__", true);
+                  it.remove();
+                  break;
                 }
               }
             }
@@ -1059,7 +1064,22 @@ public class AuToBI {
    * feature extraction pipeline.
    */
   public void registerFeatureExtractorMonikers(String package_name) {
-    Reflections reflections = new Reflections(package_name);
+    java.util.Collection<java.net.URL> urls = ClasspathHelper.forPackage(package_name);
+    if (urls.isEmpty()) {
+      // package_name may be a class-name prefix rather than a real package name; scan the parent package
+      // so that inner classes with the given class-name prefix are found
+      String parent = package_name.contains(".")
+          ? package_name.substring(0, package_name.lastIndexOf('.'))
+          : package_name;
+      urls = ClasspathHelper.forPackage(parent);
+    }
+    if (urls.isEmpty()) {
+      return;
+    }
+    Reflections reflections = new Reflections(new ConfigurationBuilder()
+        .filterInputsBy(new FilterBuilder().include(FilterBuilder.prefix(package_name)))
+        .setUrls(urls)
+        .setScanners(new org.reflections.scanners.SubTypesScanner()));
     Set<Class<? extends FeatureExtractor>> fes =
         reflections.getSubTypesOf(edu.cuny.qc.speech.AuToBI.core.FeatureExtractor.class);
     for (Class<? extends FeatureExtractor> c : fes) {
