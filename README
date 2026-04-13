@@ -11,15 +11,22 @@ Updated to Java 8, fixed source abd tests
 
 Tests run: 859, Failures: 0, Errors: 0, Skipped: 2 Missing wav files
 
-Missing wav files:
+### Missing test audio files
 
-  ┌──────────────────┬────────────────────────┬──────────────────────────────────────────────────────────────────────┐     
-  │   Missing file   │       Test class       │                              Test method                             │     
-  ├──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────┤     
-  │ test.8k.wav      │ PitchExtractorTest     │ testPitchExtractorGeneratesAReasonableNumberOfPitchFramesWith8khzFile│     
-  ├──────────────────┼────────────────────────┼──────────────────────────────────────────────────────────────────────┤     
-  │ test_villing.wav │ VillingSyllabifierTest │ testVillingSyllabifierIDsSyllables                                   │     
-  └──────────────────┴────────────────────────┴──────────────────────────────────────────────────────────────────────┘     
+The following unit tests are currently failing because the required WAV files are not present in the `test_data/` directory:
+
+| Missing file       | Test class                | Test method                                                                 |
+|--------------------|---------------------------|-----------------------------------------------------------------------------|
+| `test.8k.wav`      | `PitchExtractorTest`      | `testPitchExtractorGeneratesAReasonableNumberOfPitchFramesWith8khzFile`     |
+| `test_villing.wav` | `VillingSyllabifierTest`  | `testVillingSyllabifierIDsSyllables`                                        |
+
+**Note:**  
+The repository currently only contains these WAV files in `test_data/`:
+- `test.wav`
+- `bdc-test.wav`
+- `test.swb.terminals.wav`
+- `sineWithNoise.wav`
+- `test.zero.wav`
 
 
 Moved all dependancies to Maven
