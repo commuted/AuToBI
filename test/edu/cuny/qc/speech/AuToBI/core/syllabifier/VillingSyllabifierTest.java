@@ -24,8 +24,11 @@ import edu.cuny.qc.speech.AuToBI.core.AuToBIException;
 import edu.cuny.qc.speech.AuToBI.core.Region;
 import edu.cuny.qc.speech.AuToBI.core.WavData;
 import edu.cuny.qc.speech.AuToBI.io.WavReader;
+import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.File;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
@@ -49,6 +52,7 @@ public class VillingSyllabifierTest {
 
   @Test
   public void testSyllabifierIDsSyllables() {
+    Assume.assumeTrue(new File(TEST_DIR + "/test_villing.wav").exists());
     WavReader r = new WavReader();
     WavData wav = null;
     try {
