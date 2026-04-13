@@ -6,13 +6,33 @@ AuToBI is free software: you can redistribute it and/or modify
 it under the terms of the Apache License included in this repository 
 as LICENSE-2.0.txt
 
-Some build notes:
+--changes by commuted
+Updated to Java 8, fixed source abd tests 
 
-The lib file contains the distributions of some (but not all) dependency jars. 
+Tests run: 859, Failures: 0, Errors: 0, Skipped: 2 Missing wav files
 
-build.xml contains the list of all the dependent libraries required and their correct versions. 
-Download them and place it in the lib folder.
+### Missing test audio files
 
-Start a new project using ANT build in Eclipse and run an ANT build for build.xml.
+The following unit tests are currently failing because the required WAV files are not present in the `test_data/` directory:
 
-The ouput is AuToBI.jar, which can be run in the command line as indicated in the manual.
+| Missing file       | Test class                | Test method                                                                 |
+|--------------------|---------------------------|-----------------------------------------------------------------------------|
+| `test.8k.wav`      | `PitchExtractorTest`      | `testPitchExtractorGeneratesAReasonableNumberOfPitchFramesWith8khzFile`     |
+| `test_villing.wav` | `VillingSyllabifierTest`  | `testVillingSyllabifierIDsSyllables`                                        |
+
+**Note:**  
+The repository currently only contains these WAV files in `test_data/`:
+- `test.wav`
+- `bdc-test.wav`
+- `test.swb.terminals.wav`
+- `sineWithNoise.wav`
+- `test.zero.wav`
+
+
+Moved all dependancies to Maven
+
+mvn package 
+
+Makes an uber jar in project home: AuToBI.jar
+
+To use the ant move dependancies to lib. 
