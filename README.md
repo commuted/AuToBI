@@ -7,20 +7,9 @@ it under the terms of the Apache License included in this repository
 as LICENSE-2.0.txt
 
 --changes by commuted
-Updated to Java 8, fixed source abd tests 
+Updated Java, fixed source and tests, replaced two missing wav files for unit tests
 
-Tests run: 859, Failures: 0, Errors: 0, Skipped: 1 Missing wav files
-
-### Missing test audio files
-
-The following unit test is currently failing because the required WAV files are not present in the `test_data/` directory:
-
-| Missing file       | Test class                | Test method                                                                 |
-|--------------------|---------------------------|-----------------------------------------------------------------------------|
-| `test_villing.wav` | `VillingSyllabifierTest`  | `testVillingSyllabifierIDsSyllables`                                        |
-
-
-
+Tests run: 860, Failures: 0, Errors: 0,
 
 Moved all dependancies to Maven
 
